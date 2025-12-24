@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXERCISE TRACKER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>EXERCISE TRACKER</h1>
+    <div class="main-content">
+      <!-- Left Column: Exercises -->
+      <div class="exercises-section">
+        <h2>EXERCISES</h2>
+        <div class="add-exercise">
+          <input type="text" id="exercise-input" placeholder="Enter exercise name">
+          <button id="add-exercise-btn">Add</button>
+        </div>
+        <ul id="exercise-list"></ul>
+      </div>
+
+      <!-- Right Column: Data Entry -->
+      <div class="data-entry-section">
+        <h2>DATA</h2>
+        <div class="data-form">
+          <label for="date-input">Date:</label>
+          <input type="date" id="date-input">
+          <div id="exercise-inputs"></div>
+          <button id="submit-data-btn">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom: Data List and Graph -->
+    <div class="data-display">
+      <h2>Data History</h2>
+      <div class="data-list-container">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Exercise</th>
+              <th>Value</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="data-body"></tbody>
+        </table>
+      </div>
+      <div class="chart-container">
+        <canvas id="progress-chart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
