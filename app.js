@@ -8,11 +8,11 @@ const dateInput = document.getElementById('date-input');
 const exerciseInputs = document.getElementById('exercise-inputs');
 const submitDataBtn = document.getElementById('submit-data-btn');
 const dataBody = document.getElementById('data-body');
-const progressChartCanvas = document.getElementById('progress-chart');
+
 
 // Global variables
 let exercises = [];
-let chart;
+let charts = {};
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -172,63 +172,59 @@ dataBody.addEventListener('click', async (e) => {
   }
 });
 
-// Initialize chart
-function initChart() {
-  const ctx = progressChartCanvas.getContext('2d');
-  chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [],
-      datasets: []
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          type: 'time',
-          time: {
-            unit: 'day'
-          }
-        },
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-}
-
-// Update chart
+// Update charts
 async function updateChart() {
   try {
     const response = await fetch(`${API_BASE}/chart-data`);
     const data = await response.json();
 
-    if (!chart) {
-      initChart();
-    }
+    const chartsContainer = document.getElementById('charts-container');
+    chartsContainer.innerHTML = '';
 
-    const datasets = [];
     const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'];
 
-    let colorIndex = 0;
     for (const [exercise, values] of Object.entries(data)) {
-      datasets.push({
-        label: exercise,
-        data: values.dates.map((date, index) => ({
-          x: new Date(date),
-          y: values.values[index]
-        })),
-        borderColor: colors[colorIndex % colors.length],
-        backgroundColor: colors[colorIndex % colors.length] + '20',
-        fill: false
-      });
-      colorIndex++;
-    }
+      // Create container for each exercise chart
+      const chartDiv = document.createElement('div');
+      chartDiv.className = 'chart-container';
+      chartDiv.innerHTML = `<h3>${exercise}</h3><canvas id="chart-${exercise.replace(/\s+/g, '-')}"></canvas>`;
+      chartsContainer.appendChild(chartDiv);
 
-    chart.data.datasets = datasets;
-    chart.update();
+      // Create chart
+      const canvas = document.getElementById(`chart-${exercise.replace(/\s+/g, '-')}`);
+      const ctx = canvas.getContext('2d');
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          datasets: [{
+            label: exercise,
+            data: values.dates.map((date, index) => ({
+              x: new Date(date),
+              y: values.values[index]
+            })),
+            borderColor: colors[Object.keys(data).indexOf(exercise) % colors.length],
+            backgroundColor: colors[Object.keys(data).indexOf(exercise) % colors.length] + '20',
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'day'
+              }
+            },
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
   } catch (error) {
     console.error('Error updating chart:', error);
   }
