@@ -8,6 +8,7 @@ const dateInput = document.getElementById('date-input');
 const exerciseInputs = document.getElementById('exercise-inputs');
 const submitDataBtn = document.getElementById('submit-data-btn');
 const dataBody = document.getElementById('data-body');
+const averagesContainer = document.getElementById('averages-container');
 
 
 // Global variables
@@ -156,6 +157,28 @@ function renderDataTable(data) {
     `;
     dataBody.appendChild(tr);
   });
+
+  // Calculate and render averages
+  const averages = {};
+  const counts = {};
+  data.forEach(item => {
+    const exercise = item.exercise;
+    const value = parseFloat(item.value);
+    if (!averages[exercise]) {
+      averages[exercise] = 0;
+      counts[exercise] = 0;
+    }
+    averages[exercise] += value;
+    counts[exercise]++;
+  });
+
+  averagesContainer.innerHTML = '<h3>Average</h3>';
+  for (const exercise in averages) {
+    const avg = Math.round(averages[exercise] / counts[exercise]);
+    const p = document.createElement('p');
+    p.textContent = `${exercise}: ${avg}`;
+    averagesContainer.appendChild(p);
+  }
 }
 
 // Delete data entry
