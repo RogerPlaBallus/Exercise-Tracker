@@ -5,12 +5,12 @@
 
 A full-stack web application designed to help users log their workouts, track progress over time, and visualize their performance through interactive charts.
 
-## 📝 Project Overview
+##  Project Overview
 This application provides a seamless experience for fitness enthusiasts to manage their routines. Users can define custom exercises, log daily performance data, and view their improvement trends through a dynamic dashboard.
 
 ---
 
-## 🚀 Features
+##  Features
 
 ### **Front-End (User Interface)**
 * **Exercise Management:** Create and delete exercise categories (e.g., Abs, Pull-ups) dynamically.
@@ -27,7 +27,7 @@ This application provides a seamless experience for fitness enthusiasts to manag
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### **Front-end**
 * **HTML5 & CSS3:** Structure and professional styling.
@@ -42,7 +42,7 @@ This application provides a seamless experience for fitness enthusiasts to manag
 
 ---
 
-## 💡 Usage
+##  Usage
 1.  **Add Exercises:** Add your favorite exercises in the *Exercises* panel.
 2.  **Log Data:** Enter your daily results in the *Data* section.
 3.  **Review History:** Monitor the *Data History* table for a complete log of your work.
@@ -50,7 +50,7 @@ This application provides a seamless experience for fitness enthusiasts to manag
 
 ---
 
-## ⚙️ Installation (Optional)
+##  Installation (Optional)
 If you want to run this project locally:
 
 1. Clone the repo: `git clone <your-repo-url>`
