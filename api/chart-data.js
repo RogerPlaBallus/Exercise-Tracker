@@ -1,24 +1,16 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-let db = null;
+function getDatabase() {
+  const dbPath = path.join(process.cwd(), 'Gym.db');
+  return new sqlite3.Database(dbPath);
+}
 
-function initDB() {
+function queryDB(db, sql, params = []) {
   return new Promise((resolve, reject) => {
-    if (db) {
-      resolve(db);
-      return;
-    }
-    
-    const dbPath = path.join(process.cwd(), 'Gym.db');
-    db = new sqlite3.Database(dbPath, (err) => {
-      if (err) {
-        console.error('Error opening database:', err);
-        reject(err);
-      } else {
-        console.log('Connected to SQLite database at:', dbPath);
-        resolve(db);
-      }
+    db.all(sql, params, (err, rows) => {
+      if (err) reject(err);
+      else resolve(rows);
     });
   });
 }
@@ -34,9 +26,9 @@ module.exports = async (req, res) => {
     return;
   }
 
-  try {
-    await initDB();
+  const db = getDatabase();
 
+  try {
     if (req.method === 'GET') {
       const query = `
         SELECT e.name as exercise, ed.date, ed.value
@@ -44,26 +36,26 @@ module.exports = async (req, res) => {
         JOIN exercises e ON ed.exercise_id = e.id
         ORDER BY ed.date, e.name
       `;
-      db.all(query, [], (err, rows) => {
-        if (err) {
-          res.status(500).json({ error: err.message });
-          return;
+      const rows = await queryDB(db, query, []);
+
+      // Group by exercise
+      const data = {};
+      rows.forEach(row => {
+        if (!data[row.exercise]) {
+          data[row.exercise] = { dates: [], values: [] };
         }
-
-        // Group by exercise
-        const data = {};
-        rows.forEach(row => {
-          if (!data[row.exercise]) {
-            data[row.exercise] = { dates: [], values: [] };
-          }
-          data[row.exercise].dates.push(row.date);
-          data[row.exercise].values.push(row.value);
-        });
-
-        res.json(data);
+        data[row.exercise].dates.push(row.date);
+        data[row.exercise].values.push(row.value);
       });
+
+      res.json(data);
+    } else {
+      res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
+    console.error('Error:', error);
     res.status(500).json({ error: error.message });
+  } finally {
+    db.close();
   }
 };
