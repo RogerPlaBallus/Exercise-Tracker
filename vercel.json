@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm install",
   "public": true,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "buildCommand": "npm install"
 }
