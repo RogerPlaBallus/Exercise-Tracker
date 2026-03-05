@@ -1,8 +1,27 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const fs = require('fs');
 
 function getDatabase() {
-  const dbPath = path.join(process.cwd(), 'Gym.db');
+  // Try multiple possible paths for the database
+  const possiblePaths = [
+    path.join(__dirname, '..', 'Gym.db'),
+    path.join(process.cwd(), 'Gym.db'),
+    '/var/task/Gym.db'
+  ];
+
+  let dbPath = null;
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      dbPath = p;
+      break;
+    }
+  }
+
+  if (!dbPath) {
+    throw new Error(`Database not found. Tried: ${possiblePaths.join(', ')}`);
+  }
+
   return new sqlite3.Database(dbPath);
 }
 
@@ -26,9 +45,10 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const db = getDatabase();
-
+  let db;
   try {
+    db = getDatabase();
+
     if (req.method === 'GET') {
       const rows = await queryDB(db, 'SELECT * FROM exercises', []);
       res.json(rows);
@@ -36,9 +56,9 @@ module.exports = async (req, res) => {
       res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error:', error.message);
     res.status(500).json({ error: error.message });
   } finally {
-    db.close();
+    if (db) db.close();
   }
 };
