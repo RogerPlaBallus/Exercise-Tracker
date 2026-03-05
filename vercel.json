@@ -2,5 +2,11 @@
   "version": 2,
   "public": true,
   "cleanUrls": true,
-  "buildCommand": "npm install"
+  "buildCommand": "npm install",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ]
 }
