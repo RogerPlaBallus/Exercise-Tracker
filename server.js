@@ -13,9 +13,14 @@ app.use(express.static(path.join(__dirname)));
 // Note: This server is for local development only.
 // On Vercel, serverless functions in /api folder handle all requests.
 
-// Serve index.html for all routes (SPA)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Serve index.html for all non-file routes (SPA)
+app.use((req, res, next) => {
+  // If not an API route and not a file, serve index.html
+  if (!req.path.startsWith('/api') && !path.extname(req.path)) {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  } else {
+    next();
+  }
 });
 
 app.listen(PORT, () => {
