@@ -1,4 +1,5 @@
-const API_BASE = 'http://localhost:3000/api';
+// Use relative URLs for both local and production
+const API_BASE = '/api';
 
 // DOM elements
 const exerciseInput = document.getElementById('exercise-input');
