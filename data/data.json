@@ -1,0 +1,1394 @@
+[
+  {
+    "id": 258,
+    "exercise": "Abs",
+    "date": "2026-03-04",
+    "value": 1500
+  },
+  {
+    "id": 259,
+    "exercise": "Push Ups",
+    "date": "2026-03-04",
+    "value": 500
+  },
+  {
+    "id": 260,
+    "exercise": "Squats",
+    "date": "2026-03-04",
+    "value": 100
+  },
+  {
+    "id": 255,
+    "exercise": "Abs",
+    "date": "2026-03-03",
+    "value": 1500
+  },
+  {
+    "id": 256,
+    "exercise": "Push Ups",
+    "date": "2026-03-03",
+    "value": 500
+  },
+  {
+    "id": 257,
+    "exercise": "Squats",
+    "date": "2026-03-03",
+    "value": 100
+  },
+  {
+    "id": 252,
+    "exercise": "Abs",
+    "date": "2026-03-02",
+    "value": 1500
+  },
+  {
+    "id": 253,
+    "exercise": "Push Ups",
+    "date": "2026-03-02",
+    "value": 500
+  },
+  {
+    "id": 254,
+    "exercise": "Squats",
+    "date": "2026-03-02",
+    "value": 100
+  },
+  {
+    "id": 249,
+    "exercise": "Abs",
+    "date": "2026-02-27",
+    "value": 1500
+  },
+  {
+    "id": 250,
+    "exercise": "Push Ups",
+    "date": "2026-02-27",
+    "value": 400
+  },
+  {
+    "id": 251,
+    "exercise": "Squats",
+    "date": "2026-02-27",
+    "value": 100
+  },
+  {
+    "id": 246,
+    "exercise": "Abs",
+    "date": "2026-02-26",
+    "value": 1500
+  },
+  {
+    "id": 247,
+    "exercise": "Push Ups",
+    "date": "2026-02-26",
+    "value": 400
+  },
+  {
+    "id": 248,
+    "exercise": "Squats",
+    "date": "2026-02-26",
+    "value": 100
+  },
+  {
+    "id": 243,
+    "exercise": "Abs",
+    "date": "2026-02-25",
+    "value": 1500
+  },
+  {
+    "id": 244,
+    "exercise": "Push Ups",
+    "date": "2026-02-25",
+    "value": 400
+  },
+  {
+    "id": 245,
+    "exercise": "Squats",
+    "date": "2026-02-25",
+    "value": 100
+  },
+  {
+    "id": 240,
+    "exercise": "Abs",
+    "date": "2026-02-24",
+    "value": 1500
+  },
+  {
+    "id": 241,
+    "exercise": "Push Ups",
+    "date": "2026-02-24",
+    "value": 400
+  },
+  {
+    "id": 242,
+    "exercise": "Squats",
+    "date": "2026-02-24",
+    "value": 100
+  },
+  {
+    "id": 237,
+    "exercise": "Abs",
+    "date": "2026-02-23",
+    "value": 1500
+  },
+  {
+    "id": 238,
+    "exercise": "Push Ups",
+    "date": "2026-02-23",
+    "value": 400
+  },
+  {
+    "id": 239,
+    "exercise": "Squats",
+    "date": "2026-02-23",
+    "value": 100
+  },
+  {
+    "id": 234,
+    "exercise": "Abs",
+    "date": "2026-02-20",
+    "value": 1500
+  },
+  {
+    "id": 235,
+    "exercise": "Push Ups",
+    "date": "2026-02-20",
+    "value": 400
+  },
+  {
+    "id": 236,
+    "exercise": "Squats",
+    "date": "2026-02-20",
+    "value": 100
+  },
+  {
+    "id": 231,
+    "exercise": "Abs",
+    "date": "2026-02-19",
+    "value": 1500
+  },
+  {
+    "id": 232,
+    "exercise": "Push Ups",
+    "date": "2026-02-19",
+    "value": 350
+  },
+  {
+    "id": 233,
+    "exercise": "Squats",
+    "date": "2026-02-19",
+    "value": 100
+  },
+  {
+    "id": 228,
+    "exercise": "Abs",
+    "date": "2026-02-18",
+    "value": 1500
+  },
+  {
+    "id": 229,
+    "exercise": "Push Ups",
+    "date": "2026-02-18",
+    "value": 350
+  },
+  {
+    "id": 230,
+    "exercise": "Squats",
+    "date": "2026-02-18",
+    "value": 100
+  },
+  {
+    "id": 225,
+    "exercise": "Abs",
+    "date": "2026-02-17",
+    "value": 1500
+  },
+  {
+    "id": 226,
+    "exercise": "Push Ups",
+    "date": "2026-02-17",
+    "value": 350
+  },
+  {
+    "id": 227,
+    "exercise": "Squats",
+    "date": "2026-02-17",
+    "value": 100
+  },
+  {
+    "id": 222,
+    "exercise": "Abs",
+    "date": "2026-02-16",
+    "value": 1500
+  },
+  {
+    "id": 223,
+    "exercise": "Push Ups",
+    "date": "2026-02-16",
+    "value": 350
+  },
+  {
+    "id": 224,
+    "exercise": "Squats",
+    "date": "2026-02-16",
+    "value": 100
+  },
+  {
+    "id": 219,
+    "exercise": "Abs",
+    "date": "2026-02-13",
+    "value": 1500
+  },
+  {
+    "id": 220,
+    "exercise": "Push Ups",
+    "date": "2026-02-13",
+    "value": 350
+  },
+  {
+    "id": 221,
+    "exercise": "Squats",
+    "date": "2026-02-13",
+    "value": 100
+  },
+  {
+    "id": 216,
+    "exercise": "Abs",
+    "date": "2026-02-12",
+    "value": 1500
+  },
+  {
+    "id": 217,
+    "exercise": "Push Ups",
+    "date": "2026-02-12",
+    "value": 350
+  },
+  {
+    "id": 218,
+    "exercise": "Squats",
+    "date": "2026-02-12",
+    "value": 100
+  },
+  {
+    "id": 213,
+    "exercise": "Abs",
+    "date": "2026-02-11",
+    "value": 1500
+  },
+  {
+    "id": 214,
+    "exercise": "Push Ups",
+    "date": "2026-02-11",
+    "value": 350
+  },
+  {
+    "id": 215,
+    "exercise": "Squats",
+    "date": "2026-02-11",
+    "value": 100
+  },
+  {
+    "id": 210,
+    "exercise": "Abs",
+    "date": "2026-02-10",
+    "value": 1500
+  },
+  {
+    "id": 211,
+    "exercise": "Push Ups",
+    "date": "2026-02-10",
+    "value": 350
+  },
+  {
+    "id": 212,
+    "exercise": "Squats",
+    "date": "2026-02-10",
+    "value": 100
+  },
+  {
+    "id": 207,
+    "exercise": "Abs",
+    "date": "2026-02-09",
+    "value": 1500
+  },
+  {
+    "id": 208,
+    "exercise": "Push Ups",
+    "date": "2026-02-09",
+    "value": 350
+  },
+  {
+    "id": 209,
+    "exercise": "Squats",
+    "date": "2026-02-09",
+    "value": 100
+  },
+  {
+    "id": 204,
+    "exercise": "Abs",
+    "date": "2026-02-06",
+    "value": 1500
+  },
+  {
+    "id": 205,
+    "exercise": "Push Ups",
+    "date": "2026-02-06",
+    "value": 300
+  },
+  {
+    "id": 206,
+    "exercise": "Squats",
+    "date": "2026-02-06",
+    "value": 100
+  },
+  {
+    "id": 201,
+    "exercise": "Abs",
+    "date": "2026-02-05",
+    "value": 1500
+  },
+  {
+    "id": 202,
+    "exercise": "Push Ups",
+    "date": "2026-02-05",
+    "value": 300
+  },
+  {
+    "id": 203,
+    "exercise": "Squats",
+    "date": "2026-02-05",
+    "value": 100
+  },
+  {
+    "id": 198,
+    "exercise": "Abs",
+    "date": "2026-02-04",
+    "value": 1500
+  },
+  {
+    "id": 199,
+    "exercise": "Push Ups",
+    "date": "2026-02-04",
+    "value": 350
+  },
+  {
+    "id": 200,
+    "exercise": "Squats",
+    "date": "2026-02-04",
+    "value": 100
+  },
+  {
+    "id": 189,
+    "exercise": "Abs",
+    "date": "2026-02-03",
+    "value": 1500
+  },
+  {
+    "id": 190,
+    "exercise": "Push Ups",
+    "date": "2026-02-03",
+    "value": 300
+  },
+  {
+    "id": 197,
+    "exercise": "Squats",
+    "date": "2026-02-03",
+    "value": 100
+  },
+  {
+    "id": 187,
+    "exercise": "Abs",
+    "date": "2026-02-02",
+    "value": 1500
+  },
+  {
+    "id": 188,
+    "exercise": "Push Ups",
+    "date": "2026-02-02",
+    "value": 300
+  },
+  {
+    "id": 196,
+    "exercise": "Squats",
+    "date": "2026-02-02",
+    "value": 100
+  },
+  {
+    "id": 185,
+    "exercise": "Abs",
+    "date": "2026-01-30",
+    "value": 1500
+  },
+  {
+    "id": 186,
+    "exercise": "Push Ups",
+    "date": "2026-01-30",
+    "value": 300
+  },
+  {
+    "id": 195,
+    "exercise": "Squats",
+    "date": "2026-01-30",
+    "value": 20
+  },
+  {
+    "id": 183,
+    "exercise": "Abs",
+    "date": "2026-01-29",
+    "value": 1500
+  },
+  {
+    "id": 184,
+    "exercise": "Push Ups",
+    "date": "2026-01-29",
+    "value": 300
+  },
+  {
+    "id": 194,
+    "exercise": "Squats",
+    "date": "2026-01-29",
+    "value": 40
+  },
+  {
+    "id": 181,
+    "exercise": "Abs",
+    "date": "2026-01-28",
+    "value": 1500
+  },
+  {
+    "id": 182,
+    "exercise": "Push Ups",
+    "date": "2026-01-28",
+    "value": 300
+  },
+  {
+    "id": 193,
+    "exercise": "Squats",
+    "date": "2026-01-28",
+    "value": 20
+  },
+  {
+    "id": 179,
+    "exercise": "Abs",
+    "date": "2026-01-27",
+    "value": 1500
+  },
+  {
+    "id": 180,
+    "exercise": "Push Ups",
+    "date": "2026-01-27",
+    "value": 300
+  },
+  {
+    "id": 192,
+    "exercise": "Squats",
+    "date": "2026-01-27",
+    "value": 40
+  },
+  {
+    "id": 177,
+    "exercise": "Abs",
+    "date": "2026-01-26",
+    "value": 1500
+  },
+  {
+    "id": 178,
+    "exercise": "Push Ups",
+    "date": "2026-01-26",
+    "value": 300
+  },
+  {
+    "id": 191,
+    "exercise": "Squats",
+    "date": "2026-01-26",
+    "value": 80
+  },
+  {
+    "id": 175,
+    "exercise": "Abs",
+    "date": "2026-01-23",
+    "value": 1500
+  },
+  {
+    "id": 176,
+    "exercise": "Push Ups",
+    "date": "2026-01-23",
+    "value": 300
+  },
+  {
+    "id": 173,
+    "exercise": "Abs",
+    "date": "2026-01-22",
+    "value": 1500
+  },
+  {
+    "id": 174,
+    "exercise": "Push Ups",
+    "date": "2026-01-22",
+    "value": 300
+  },
+  {
+    "id": 171,
+    "exercise": "Abs",
+    "date": "2026-01-21",
+    "value": 1500
+  },
+  {
+    "id": 172,
+    "exercise": "Push Ups",
+    "date": "2026-01-21",
+    "value": 220
+  },
+  {
+    "id": 169,
+    "exercise": "Abs",
+    "date": "2026-01-20",
+    "value": 1500
+  },
+  {
+    "id": 170,
+    "exercise": "Push Ups",
+    "date": "2026-01-20",
+    "value": 300
+  },
+  {
+    "id": 167,
+    "exercise": "Abs",
+    "date": "2026-01-19",
+    "value": 1500
+  },
+  {
+    "id": 168,
+    "exercise": "Push Ups",
+    "date": "2026-01-19",
+    "value": 220
+  },
+  {
+    "id": 165,
+    "exercise": "Abs",
+    "date": "2026-01-16",
+    "value": 1500
+  },
+  {
+    "id": 166,
+    "exercise": "Push Ups",
+    "date": "2026-01-16",
+    "value": 220
+  },
+  {
+    "id": 155,
+    "exercise": "Abs",
+    "date": "2026-01-15",
+    "value": 1500
+  },
+  {
+    "id": 163,
+    "exercise": "Abs",
+    "date": "2026-01-15",
+    "value": 1500
+  },
+  {
+    "id": 156,
+    "exercise": "Push Ups",
+    "date": "2026-01-15",
+    "value": 220
+  },
+  {
+    "id": 164,
+    "exercise": "Push Ups",
+    "date": "2026-01-15",
+    "value": 220
+  },
+  {
+    "id": 153,
+    "exercise": "Abs",
+    "date": "2026-01-14",
+    "value": 1500
+  },
+  {
+    "id": 161,
+    "exercise": "Abs",
+    "date": "2026-01-14",
+    "value": 1500
+  },
+  {
+    "id": 154,
+    "exercise": "Push Ups",
+    "date": "2026-01-14",
+    "value": 220
+  },
+  {
+    "id": 162,
+    "exercise": "Push Ups",
+    "date": "2026-01-14",
+    "value": 220
+  },
+  {
+    "id": 151,
+    "exercise": "Abs",
+    "date": "2026-01-13",
+    "value": 1500
+  },
+  {
+    "id": 159,
+    "exercise": "Abs",
+    "date": "2026-01-13",
+    "value": 1500
+  },
+  {
+    "id": 152,
+    "exercise": "Push Ups",
+    "date": "2026-01-13",
+    "value": 220
+  },
+  {
+    "id": 160,
+    "exercise": "Push Ups",
+    "date": "2026-01-13",
+    "value": 220
+  },
+  {
+    "id": 149,
+    "exercise": "Abs",
+    "date": "2026-01-12",
+    "value": 1500
+  },
+  {
+    "id": 157,
+    "exercise": "Abs",
+    "date": "2026-01-12",
+    "value": 1500
+  },
+  {
+    "id": 150,
+    "exercise": "Push Ups",
+    "date": "2026-01-12",
+    "value": 200
+  },
+  {
+    "id": 158,
+    "exercise": "Push Ups",
+    "date": "2026-01-12",
+    "value": 200
+  },
+  {
+    "id": 147,
+    "exercise": "Abs",
+    "date": "2026-01-09",
+    "value": 1500
+  },
+  {
+    "id": 148,
+    "exercise": "Push Ups",
+    "date": "2026-01-09",
+    "value": 200
+  },
+  {
+    "id": 145,
+    "exercise": "Abs",
+    "date": "2026-01-08",
+    "value": 1500
+  },
+  {
+    "id": 146,
+    "exercise": "Push Ups",
+    "date": "2026-01-08",
+    "value": 200
+  },
+  {
+    "id": 143,
+    "exercise": "Abs",
+    "date": "2026-01-07",
+    "value": 1500
+  },
+  {
+    "id": 144,
+    "exercise": "Push Ups",
+    "date": "2026-01-07",
+    "value": 200
+  },
+  {
+    "id": 141,
+    "exercise": "Abs",
+    "date": "2026-01-06",
+    "value": 1500
+  },
+  {
+    "id": 142,
+    "exercise": "Push Ups",
+    "date": "2026-01-06",
+    "value": 200
+  },
+  {
+    "id": 139,
+    "exercise": "Abs",
+    "date": "2026-01-05",
+    "value": 1500
+  },
+  {
+    "id": 140,
+    "exercise": "Push Ups",
+    "date": "2026-01-05",
+    "value": 200
+  },
+  {
+    "id": 137,
+    "exercise": "Abs",
+    "date": "2026-01-02",
+    "value": 1500
+  },
+  {
+    "id": 138,
+    "exercise": "Push Ups",
+    "date": "2026-01-02",
+    "value": 200
+  },
+  {
+    "id": 135,
+    "exercise": "Abs",
+    "date": "2026-01-01",
+    "value": 1500
+  },
+  {
+    "id": 136,
+    "exercise": "Push Ups",
+    "date": "2026-01-01",
+    "value": 200
+  },
+  {
+    "id": 127,
+    "exercise": "Abs",
+    "date": "2025-12-31",
+    "value": 1500
+  },
+  {
+    "id": 128,
+    "exercise": "Push Ups",
+    "date": "2025-12-31",
+    "value": 200
+  },
+  {
+    "id": 125,
+    "exercise": "Abs",
+    "date": "2025-12-30",
+    "value": 1500
+  },
+  {
+    "id": 126,
+    "exercise": "Push Ups",
+    "date": "2025-12-30",
+    "value": 200
+  },
+  {
+    "id": 123,
+    "exercise": "Abs",
+    "date": "2025-12-29",
+    "value": 1500
+  },
+  {
+    "id": 124,
+    "exercise": "Push Ups",
+    "date": "2025-12-29",
+    "value": 200
+  },
+  {
+    "id": 121,
+    "exercise": "Abs",
+    "date": "2025-12-26",
+    "value": 1500
+  },
+  {
+    "id": 122,
+    "exercise": "Push Ups",
+    "date": "2025-12-26",
+    "value": 200
+  },
+  {
+    "id": 119,
+    "exercise": "Abs",
+    "date": "2025-12-25",
+    "value": 1500
+  },
+  {
+    "id": 120,
+    "exercise": "Push Ups",
+    "date": "2025-12-25",
+    "value": 200
+  },
+  {
+    "id": 117,
+    "exercise": "Abs",
+    "date": "2025-12-24",
+    "value": 1000
+  },
+  {
+    "id": 118,
+    "exercise": "Push Ups",
+    "date": "2025-12-24",
+    "value": 200
+  },
+  {
+    "id": 113,
+    "exercise": "Abs",
+    "date": "2025-12-23",
+    "value": 1000
+  },
+  {
+    "id": 114,
+    "exercise": "Push Ups",
+    "date": "2025-12-23",
+    "value": 200
+  },
+  {
+    "id": 111,
+    "exercise": "Abs",
+    "date": "2025-12-22",
+    "value": 1000
+  },
+  {
+    "id": 112,
+    "exercise": "Push Ups",
+    "date": "2025-12-22",
+    "value": 200
+  },
+  {
+    "id": 109,
+    "exercise": "Abs",
+    "date": "2025-12-19",
+    "value": 1000
+  },
+  {
+    "id": 110,
+    "exercise": "Push Ups",
+    "date": "2025-12-19",
+    "value": 160
+  },
+  {
+    "id": 107,
+    "exercise": "Abs",
+    "date": "2025-12-18",
+    "value": 1000
+  },
+  {
+    "id": 108,
+    "exercise": "Push Ups",
+    "date": "2025-12-18",
+    "value": 160
+  },
+  {
+    "id": 105,
+    "exercise": "Abs",
+    "date": "2025-12-17",
+    "value": 1000
+  },
+  {
+    "id": 106,
+    "exercise": "Push Ups",
+    "date": "2025-12-17",
+    "value": 160
+  },
+  {
+    "id": 103,
+    "exercise": "Abs",
+    "date": "2025-12-16",
+    "value": 1000
+  },
+  {
+    "id": 104,
+    "exercise": "Push Ups",
+    "date": "2025-12-16",
+    "value": 160
+  },
+  {
+    "id": 101,
+    "exercise": "Abs",
+    "date": "2025-12-15",
+    "value": 1000
+  },
+  {
+    "id": 102,
+    "exercise": "Push Ups",
+    "date": "2025-12-15",
+    "value": 160
+  },
+  {
+    "id": 99,
+    "exercise": "Abs",
+    "date": "2025-12-12",
+    "value": 1000
+  },
+  {
+    "id": 100,
+    "exercise": "Push Ups",
+    "date": "2025-12-12",
+    "value": 160
+  },
+  {
+    "id": 97,
+    "exercise": "Abs",
+    "date": "2025-12-11",
+    "value": 1000
+  },
+  {
+    "id": 98,
+    "exercise": "Push Ups",
+    "date": "2025-12-11",
+    "value": 160
+  },
+  {
+    "id": 95,
+    "exercise": "Abs",
+    "date": "2025-12-10",
+    "value": 1000
+  },
+  {
+    "id": 96,
+    "exercise": "Push Ups",
+    "date": "2025-12-10",
+    "value": 160
+  },
+  {
+    "id": 93,
+    "exercise": "Abs",
+    "date": "2025-12-09",
+    "value": 1000
+  },
+  {
+    "id": 94,
+    "exercise": "Push Ups",
+    "date": "2025-12-09",
+    "value": 120
+  },
+  {
+    "id": 91,
+    "exercise": "Abs",
+    "date": "2025-12-08",
+    "value": 1000
+  },
+  {
+    "id": 92,
+    "exercise": "Push Ups",
+    "date": "2025-12-08",
+    "value": 120
+  },
+  {
+    "id": 89,
+    "exercise": "Abs",
+    "date": "2025-12-05",
+    "value": 1000
+  },
+  {
+    "id": 90,
+    "exercise": "Push Ups",
+    "date": "2025-12-05",
+    "value": 120
+  },
+  {
+    "id": 87,
+    "exercise": "Abs",
+    "date": "2025-12-04",
+    "value": 1000
+  },
+  {
+    "id": 88,
+    "exercise": "Push Ups",
+    "date": "2025-12-04",
+    "value": 120
+  },
+  {
+    "id": 85,
+    "exercise": "Abs",
+    "date": "2025-12-03",
+    "value": 1000
+  },
+  {
+    "id": 86,
+    "exercise": "Push Ups",
+    "date": "2025-12-03",
+    "value": 120
+  },
+  {
+    "id": 83,
+    "exercise": "Abs",
+    "date": "2025-12-02",
+    "value": 1000
+  },
+  {
+    "id": 84,
+    "exercise": "Push Ups",
+    "date": "2025-12-02",
+    "value": 120
+  },
+  {
+    "id": 81,
+    "exercise": "Abs",
+    "date": "2025-12-01",
+    "value": 1000
+  },
+  {
+    "id": 82,
+    "exercise": "Push Ups",
+    "date": "2025-12-01",
+    "value": 120
+  },
+  {
+    "id": 79,
+    "exercise": "Abs",
+    "date": "2025-11-28",
+    "value": 1000
+  },
+  {
+    "id": 80,
+    "exercise": "Push Ups",
+    "date": "2025-11-28",
+    "value": 120
+  },
+  {
+    "id": 77,
+    "exercise": "Abs",
+    "date": "2025-11-27",
+    "value": 1000
+  },
+  {
+    "id": 78,
+    "exercise": "Push Ups",
+    "date": "2025-11-27",
+    "value": 120
+  },
+  {
+    "id": 75,
+    "exercise": "Abs",
+    "date": "2025-11-26",
+    "value": 1000
+  },
+  {
+    "id": 76,
+    "exercise": "Push Ups",
+    "date": "2025-11-26",
+    "value": 120
+  },
+  {
+    "id": 73,
+    "exercise": "Abs",
+    "date": "2025-11-25",
+    "value": 1000
+  },
+  {
+    "id": 74,
+    "exercise": "Push Ups",
+    "date": "2025-11-25",
+    "value": 120
+  },
+  {
+    "id": 71,
+    "exercise": "Abs",
+    "date": "2025-11-24",
+    "value": 1000
+  },
+  {
+    "id": 72,
+    "exercise": "Push Ups",
+    "date": "2025-11-24",
+    "value": 100
+  },
+  {
+    "id": 69,
+    "exercise": "Abs",
+    "date": "2025-11-21",
+    "value": 1000
+  },
+  {
+    "id": 70,
+    "exercise": "Push Ups",
+    "date": "2025-11-21",
+    "value": 100
+  },
+  {
+    "id": 67,
+    "exercise": "Abs",
+    "date": "2025-11-20",
+    "value": 1000
+  },
+  {
+    "id": 68,
+    "exercise": "Push Ups",
+    "date": "2025-11-20",
+    "value": 100
+  },
+  {
+    "id": 65,
+    "exercise": "Abs",
+    "date": "2025-11-19",
+    "value": 1000
+  },
+  {
+    "id": 66,
+    "exercise": "Push Ups",
+    "date": "2025-11-19",
+    "value": 100
+  },
+  {
+    "id": 63,
+    "exercise": "Abs",
+    "date": "2025-11-18",
+    "value": 1000
+  },
+  {
+    "id": 64,
+    "exercise": "Push Ups",
+    "date": "2025-11-18",
+    "value": 100
+  },
+  {
+    "id": 61,
+    "exercise": "Abs",
+    "date": "2025-11-17",
+    "value": 1000
+  },
+  {
+    "id": 62,
+    "exercise": "Push Ups",
+    "date": "2025-11-17",
+    "value": 100
+  },
+  {
+    "id": 59,
+    "exercise": "Abs",
+    "date": "2025-11-14",
+    "value": 1000
+  },
+  {
+    "id": 60,
+    "exercise": "Push Ups",
+    "date": "2025-11-14",
+    "value": 100
+  },
+  {
+    "id": 57,
+    "exercise": "Abs",
+    "date": "2025-11-13",
+    "value": 1000
+  },
+  {
+    "id": 58,
+    "exercise": "Push Ups",
+    "date": "2025-11-13",
+    "value": 100
+  },
+  {
+    "id": 55,
+    "exercise": "Abs",
+    "date": "2025-11-12",
+    "value": 1000
+  },
+  {
+    "id": 56,
+    "exercise": "Push Ups",
+    "date": "2025-11-12",
+    "value": 100
+  },
+  {
+    "id": 53,
+    "exercise": "Abs",
+    "date": "2025-11-11",
+    "value": 1000
+  },
+  {
+    "id": 54,
+    "exercise": "Push Ups",
+    "date": "2025-11-11",
+    "value": 100
+  },
+  {
+    "id": 51,
+    "exercise": "Abs",
+    "date": "2025-11-10",
+    "value": 1000
+  },
+  {
+    "id": 52,
+    "exercise": "Push Ups",
+    "date": "2025-11-10",
+    "value": 100
+  },
+  {
+    "id": 49,
+    "exercise": "Abs",
+    "date": "2025-11-07",
+    "value": 1000
+  },
+  {
+    "id": 50,
+    "exercise": "Push Ups",
+    "date": "2025-11-07",
+    "value": 100
+  },
+  {
+    "id": 47,
+    "exercise": "Abs",
+    "date": "2025-11-06",
+    "value": 1000
+  },
+  {
+    "id": 48,
+    "exercise": "Push Ups",
+    "date": "2025-11-06",
+    "value": 100
+  },
+  {
+    "id": 45,
+    "exercise": "Abs",
+    "date": "2025-11-05",
+    "value": 1000
+  },
+  {
+    "id": 46,
+    "exercise": "Push Ups",
+    "date": "2025-11-05",
+    "value": 100
+  },
+  {
+    "id": 43,
+    "exercise": "Abs",
+    "date": "2025-11-04",
+    "value": 1000
+  },
+  {
+    "id": 44,
+    "exercise": "Push Ups",
+    "date": "2025-11-04",
+    "value": 100
+  },
+  {
+    "id": 41,
+    "exercise": "Abs",
+    "date": "2025-11-03",
+    "value": 1000
+  },
+  {
+    "id": 42,
+    "exercise": "Push Ups",
+    "date": "2025-11-03",
+    "value": 80
+  },
+  {
+    "id": 33,
+    "exercise": "Abs",
+    "date": "2025-10-31",
+    "value": 1000
+  },
+  {
+    "id": 34,
+    "exercise": "Push Ups",
+    "date": "2025-10-31",
+    "value": 80
+  },
+  {
+    "id": 31,
+    "exercise": "Abs",
+    "date": "2025-10-30",
+    "value": 1000
+  },
+  {
+    "id": 32,
+    "exercise": "Push Ups",
+    "date": "2025-10-30",
+    "value": 80
+  },
+  {
+    "id": 29,
+    "exercise": "Abs",
+    "date": "2025-10-29",
+    "value": 1000
+  },
+  {
+    "id": 30,
+    "exercise": "Push Ups",
+    "date": "2025-10-29",
+    "value": 80
+  },
+  {
+    "id": 27,
+    "exercise": "Abs",
+    "date": "2025-10-28",
+    "value": 1500
+  },
+  {
+    "id": 28,
+    "exercise": "Push Ups",
+    "date": "2025-10-28",
+    "value": 80
+  },
+  {
+    "id": 25,
+    "exercise": "Abs",
+    "date": "2025-10-27",
+    "value": 500
+  },
+  {
+    "id": 26,
+    "exercise": "Push Ups",
+    "date": "2025-10-27",
+    "value": 40
+  },
+  {
+    "id": 23,
+    "exercise": "Abs",
+    "date": "2025-10-24",
+    "value": 500
+  },
+  {
+    "id": 24,
+    "exercise": "Push Ups",
+    "date": "2025-10-24",
+    "value": 40
+  },
+  {
+    "id": 21,
+    "exercise": "Abs",
+    "date": "2025-10-23",
+    "value": 500
+  },
+  {
+    "id": 22,
+    "exercise": "Push Ups",
+    "date": "2025-10-23",
+    "value": 40
+  },
+  {
+    "id": 19,
+    "exercise": "Abs",
+    "date": "2025-10-22",
+    "value": 500
+  },
+  {
+    "id": 20,
+    "exercise": "Push Ups",
+    "date": "2025-10-22",
+    "value": 40
+  },
+  {
+    "id": 17,
+    "exercise": "Abs",
+    "date": "2025-10-21",
+    "value": 500
+  },
+  {
+    "id": 18,
+    "exercise": "Push Ups",
+    "date": "2025-10-21",
+    "value": 40
+  },
+  {
+    "id": 15,
+    "exercise": "Abs",
+    "date": "2025-10-20",
+    "value": 500
+  },
+  {
+    "id": 16,
+    "exercise": "Push Ups",
+    "date": "2025-10-20",
+    "value": 40
+  }
+]

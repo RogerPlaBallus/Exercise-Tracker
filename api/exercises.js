@@ -1,37 +1,20 @@
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
-function getDatabase() {
-  // Try multiple possible paths for the database
+function loadExercises() {
   const possiblePaths = [
-    path.join(__dirname, '..', 'Gym.db'),
-    path.join(process.cwd(), 'Gym.db'),
-    '/var/task/Gym.db'
+    path.join(__dirname, '..', 'data', 'exercises.json'),
+    path.join(process.cwd(), 'data', 'exercises.json'),
+    '/var/task/data/exercises.json'
   ];
 
-  let dbPath = null;
   for (const p of possiblePaths) {
     if (fs.existsSync(p)) {
-      dbPath = p;
-      break;
+      return JSON.parse(fs.readFileSync(p, 'utf8'));
     }
   }
 
-  if (!dbPath) {
-    throw new Error(`Database not found. Tried: ${possiblePaths.join(', ')}`);
-  }
-
-  return new sqlite3.Database(dbPath);
-}
-
-function queryDB(db, sql, params = []) {
-  return new Promise((resolve, reject) => {
-    db.all(sql, params, (err, rows) => {
-      if (err) reject(err);
-      else resolve(rows);
-    });
-  });
+  throw new Error(`Exercises data not found. Tried: ${possiblePaths.join(', ')}`);
 }
 
 module.exports = async (req, res) => {
@@ -39,26 +22,22 @@ module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+  res.setHeader('Content-Type', 'application/json');
   
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  let db;
   try {
-    db = getDatabase();
-
     if (req.method === 'GET') {
-      const rows = await queryDB(db, 'SELECT * FROM exercises', []);
-      res.json(rows);
+      const exercises = loadExercises();
+      res.json(exercises);
     } else {
       res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
     console.error('Error:', error.message);
     res.status(500).json({ error: error.message });
-  } finally {
-    if (db) db.close();
   }
 };
