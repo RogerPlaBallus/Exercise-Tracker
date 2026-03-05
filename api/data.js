@@ -4,22 +4,26 @@ const path = require('path');
 let db = null;
 
 function initDB() {
-  if (db) return Promise.resolve(db);
-  
   return new Promise((resolve, reject) => {
-    db = new sqlite3.Database(path.join(process.cwd(), 'Gym.db'), (err) => {
+    if (db) {
+      resolve(db);
+      return;
+    }
+    
+    const dbPath = path.join(process.cwd(), 'Gym.db');
+    db = new sqlite3.Database(dbPath, (err) => {
       if (err) {
-        console.error('Error opening database:', err.message);
+        console.error('Error opening database:', err);
         reject(err);
       } else {
-        console.log('Connected to SQLite database.');
+        console.log('Connected to SQLite database at:', dbPath);
         resolve(db);
       }
     });
   });
 }
 
-export default async (req, res) => {
+module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
