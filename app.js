@@ -1,7 +1,10 @@
-// Use relative URLs for both local and production
 const API_BASE = '/api';
+const STORAGE_KEY = 'exercise-tracker-demo-state-v1';
+const FALLBACK_ENDPOINTS = {
+  exercises: [`${API_BASE}/exercises`, '/data/exercises.json'],
+  data: [`${API_BASE}/data`, '/data/data.json']
+};
 
-// DOM elements
 const exerciseInput = document.getElementById('exercise-input');
 const addExerciseBtn = document.getElementById('add-exercise-btn');
 const exerciseList = document.getElementById('exercise-list');
@@ -10,41 +13,166 @@ const exerciseInputs = document.getElementById('exercise-inputs');
 const submitDataBtn = document.getElementById('submit-data-btn');
 const dataBody = document.getElementById('data-body');
 const averagesContainer = document.getElementById('averages-container');
+const chartsContainer = document.getElementById('charts-container');
 
-
-// Global variables
 let exercises = [];
+let workoutData = [];
 let charts = {};
+let memoryState = null;
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  loadExercises();
-  loadData();
+document.addEventListener('DOMContentLoaded', async () => {
   setDefaultDate();
+  await initializeApp();
 });
 
-// Set today's date as default
 function setDefaultDate() {
   const today = new Date().toISOString().split('T')[0];
   dateInput.value = today;
 }
 
-// Load exercises from server
-async function loadExercises() {
+async function initializeApp() {
+  const state = await ensureDemoState();
+  exercises = state.exercises;
+  workoutData = state.data;
+  renderAll();
+}
+
+async function ensureDemoState() {
+  const storedState = readStoredState();
+  if (storedState) {
+    return storedState;
+  }
+
+  const [seedExercises, seedData] = await Promise.all([
+    fetchJsonWithFallback(FALLBACK_ENDPOINTS.exercises),
+    fetchJsonWithFallback(FALLBACK_ENDPOINTS.data)
+  ]);
+
+  const seededState = {
+    exercises: normalizeExercises(seedExercises),
+    data: normalizeWorkoutData(seedData)
+  };
+
+  if (seededState.exercises.length > 0 || seededState.data.length > 0) {
+    writeStoredState(seededState);
+  }
+
+  return seededState;
+}
+
+async function fetchJsonWithFallback(urls) {
+  let lastError = null;
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, {
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error('Response was not JSON');
+      }
+
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  if (lastError) {
+    console.error('Error loading seed data:', lastError);
+  }
+
+  return [];
+}
+
+function normalizeExercises(items) {
+  return items
+    .map((item) => ({
+      id: Number(item.id),
+      name: String(item.name || '').trim()
+    }))
+    .filter((item) => Number.isFinite(item.id) && item.name);
+}
+
+function normalizeWorkoutData(items) {
+  return items
+    .map((item) => ({
+      id: Number(item.id),
+      exercise: String(item.exercise || '').trim(),
+      date: String(item.date || '').trim(),
+      value: Number(item.value)
+    }))
+    .filter(
+      (item) =>
+        Number.isFinite(item.id) &&
+        item.exercise &&
+        item.date &&
+        Number.isFinite(item.value)
+    );
+}
+
+function cloneState(state) {
+  return JSON.parse(JSON.stringify(state));
+}
+
+function readStoredState() {
   try {
-    const response = await fetch(`${API_BASE}/exercises`);
-    exercises = await response.json();
-    renderExercises();
-    renderExerciseInputs();
+    const rawState = window.localStorage.getItem(STORAGE_KEY);
+    if (!rawState) {
+      return memoryState ? cloneState(memoryState) : null;
+    }
+
+    const parsedState = JSON.parse(rawState);
+    return {
+      exercises: normalizeExercises(parsedState.exercises || []),
+      data: normalizeWorkoutData(parsedState.data || [])
+    };
   } catch (error) {
-    console.error('Error loading exercises:', error);
+    if (memoryState) {
+      return cloneState(memoryState);
+    }
+
+    console.error('Error reading demo state:', error);
+    return null;
   }
 }
 
-// Render exercise list
+function writeStoredState(state) {
+  const nextState = {
+    exercises: normalizeExercises(state.exercises || []),
+    data: normalizeWorkoutData(state.data || [])
+  };
+
+  memoryState = cloneState(nextState);
+
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+  } catch (error) {
+    console.error('Error saving demo state:', error);
+  }
+}
+
+function saveState() {
+  writeStoredState({ exercises, data: workoutData });
+}
+
+function renderAll() {
+  renderExercises();
+  renderExerciseInputs();
+  renderDataTable(workoutData);
+  updateChart();
+}
+
 function renderExercises() {
   exerciseList.innerHTML = '';
-  exercises.forEach(exercise => {
+
+  exercises.forEach((exercise) => {
     const li = document.createElement('li');
     li.innerHTML = `
       <span>${exercise.name}</span>
@@ -54,10 +182,10 @@ function renderExercises() {
   });
 }
 
-// Render dynamic inputs for data entry
 function renderExerciseInputs() {
   exerciseInputs.innerHTML = '';
-  exercises.forEach(exercise => {
+
+  exercises.forEach((exercise) => {
     const div = document.createElement('div');
     div.className = 'exercise-input-group';
     div.innerHTML = `
@@ -68,87 +196,11 @@ function renderExerciseInputs() {
   });
 }
 
-// Add exercise
-addExerciseBtn.addEventListener('click', async () => {
-  const name = exerciseInput.value.trim();
-  if (!name) return;
-
-  try {
-    const response = await fetch(`${API_BASE}/exercises`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name })
-    });
-
-    if (response.ok) {
-      exerciseInput.value = '';
-      loadExercises();
-    }
-  } catch (error) {
-    console.error('Error adding exercise:', error);
-  }
-});
-
-// Delete exercise
-exerciseList.addEventListener('click', async (e) => {
-  if (e.target.classList.contains('delete-btn')) {
-    const id = e.target.dataset.id;
-    try {
-      await fetch(`${API_BASE}/exercises/${id}`, { method: 'DELETE' });
-      loadExercises();
-      loadData();
-      updateChart();
-    } catch (error) {
-      console.error('Error deleting exercise:', error);
-    }
-  }
-});
-
-// Submit data
-submitDataBtn.addEventListener('click', async () => {
-  const date = dateInput.value;
-  if (!date) return;
-
-  const data = {};
-  exercises.forEach(exercise => {
-    const input = document.getElementById(`input-${exercise.id}`);
-    const value = input.value.trim();
-    if (value) {
-      data[exercise.id] = value;
-      input.value = '';
-    }
-  });
-
-  if (Object.keys(data).length === 0) return;
-
-  try {
-    await fetch(`${API_BASE}/data`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ date, data })
-    });
-    loadData();
-    updateChart();
-  } catch (error) {
-    console.error('Error submitting data:', error);
-  }
-});
-
-// Load data history
-async function loadData() {
-  try {
-    const response = await fetch(`${API_BASE}/data`);
-    const data = await response.json();
-    renderDataTable(data);
-  } catch (error) {
-    console.error('Error loading data:', error);
-  }
-}
-
-// Render data table
 function renderDataTable(data) {
+  const sortedData = [...data].sort(compareDataEntriesDesc);
   dataBody.innerHTML = '';
-  data.forEach(item => {
+
+  sortedData.forEach((item) => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${item.date}</td>
@@ -159,100 +211,214 @@ function renderDataTable(data) {
     dataBody.appendChild(tr);
   });
 
-  // Calculate and render averages
   const averages = {};
   const counts = {};
-  data.forEach(item => {
-    const exercise = item.exercise;
-    const value = parseFloat(item.value);
-    if (!averages[exercise]) {
-      averages[exercise] = 0;
-      counts[exercise] = 0;
+
+  data.forEach((item) => {
+    if (!averages[item.exercise]) {
+      averages[item.exercise] = 0;
+      counts[item.exercise] = 0;
     }
-    averages[exercise] += value;
-    counts[exercise]++;
+
+    averages[item.exercise] += Number(item.value);
+    counts[item.exercise] += 1;
   });
 
   averagesContainer.innerHTML = '<h3>Average</h3>';
-  for (const exercise in averages) {
-    const avg = Math.round(averages[exercise] / counts[exercise]);
-    const p = document.createElement('p');
-    p.textContent = `${exercise}: ${avg}`;
-    averagesContainer.appendChild(p);
-  }
+
+  Object.keys(averages)
+    .sort((a, b) => a.localeCompare(b))
+    .forEach((exercise) => {
+      const avg = Math.round(averages[exercise] / counts[exercise]);
+      const p = document.createElement('p');
+      p.textContent = `${exercise}: ${avg}`;
+      averagesContainer.appendChild(p);
+    });
 }
 
-// Delete data entry
-dataBody.addEventListener('click', async (e) => {
-  if (e.target.classList.contains('delete-btn')) {
-    const id = e.target.dataset.id;
-    try {
-      await fetch(`${API_BASE}/data/${id}`, { method: 'DELETE' });
-      loadData();
-      updateChart();
-    } catch (error) {
-      console.error('Error deleting data:', error);
-    }
+function compareDataEntriesDesc(a, b) {
+  const dateDifference = new Date(b.date) - new Date(a.date);
+  if (dateDifference !== 0) {
+    return dateDifference;
   }
-});
 
-// Update charts
-async function updateChart() {
-  try {
-    const response = await fetch(`${API_BASE}/chart-data`);
-    const data = await response.json();
+  return b.id - a.id;
+}
 
-    const chartsContainer = document.getElementById('charts-container');
-    chartsContainer.innerHTML = '';
+function getNextId(items) {
+  return items.reduce((maxId, item) => Math.max(maxId, Number(item.id) || 0), 0) + 1;
+}
 
-    const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'];
+function destroyCharts() {
+  Object.values(charts).forEach((chart) => chart.destroy());
+  charts = {};
+}
 
-    for (const [exercise, values] of Object.entries(data)) {
-      // Create container for each exercise chart
-      const chartDiv = document.createElement('div');
-      chartDiv.className = 'chart-container';
-      chartDiv.innerHTML = `<h3>${exercise}</h3><canvas id="chart-${exercise.replace(/\s+/g, '-')}"></canvas>`;
-      chartsContainer.appendChild(chartDiv);
+function buildChartData() {
+  const grouped = {};
 
-      // Create chart
-      const canvas = document.getElementById(`chart-${exercise.replace(/\s+/g, '-')}`);
-      const ctx = canvas.getContext('2d');
+  workoutData.forEach((entry) => {
+    if (!grouped[entry.exercise]) {
+      grouped[entry.exercise] = [];
+    }
 
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          datasets: [{
+    grouped[entry.exercise].push(entry);
+  });
+
+  return Object.fromEntries(
+    Object.entries(grouped).map(([exercise, entries]) => [
+      exercise,
+      [...entries].sort((a, b) => new Date(a.date) - new Date(b.date))
+    ])
+  );
+}
+
+function updateChart() {
+  destroyCharts();
+  chartsContainer.innerHTML = '';
+
+  const chartData = buildChartData();
+  const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'];
+
+  Object.entries(chartData).forEach(([exercise, entries], index) => {
+    const chartDiv = document.createElement('div');
+    chartDiv.className = 'chart-container';
+    chartDiv.innerHTML = `<h3>${exercise}</h3><canvas id="chart-${exercise.replace(/\s+/g, '-')}"></canvas>`;
+    chartsContainer.appendChild(chartDiv);
+
+    const canvas = document.getElementById(`chart-${exercise.replace(/\s+/g, '-')}`);
+    const ctx = canvas.getContext('2d');
+
+    charts[exercise] = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
             label: exercise,
-            data: values.dates.map((date, index) => ({
-              x: new Date(date),
-              y: values.values[index]
+            data: entries.map((entry) => ({
+              x: new Date(entry.date),
+              y: entry.value
             })),
-            borderColor: colors[Object.keys(data).indexOf(exercise) % colors.length],
-            backgroundColor: colors[Object.keys(data).indexOf(exercise) % colors.length] + '20',
+            borderColor: colors[index % colors.length],
+            backgroundColor: `${colors[index % colors.length]}20`,
             fill: false
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            x: {
-              type: 'time',
-              time: {
-                unit: 'day'
-              }
-            },
-            y: {
-              beginAtZero: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              unit: 'day'
             }
+          },
+          y: {
+            beginAtZero: true
           }
         }
-      });
-    }
-  } catch (error) {
-    console.error('Error updating chart:', error);
-  }
+      }
+    });
+  });
 }
 
-// Load chart on page load
-updateChart();
+addExerciseBtn.addEventListener('click', () => {
+  const name = exerciseInput.value.trim();
+  if (!name) {
+    return;
+  }
+
+  const duplicateExercise = exercises.some(
+    (exercise) => exercise.name.toLowerCase() === name.toLowerCase()
+  );
+
+  if (duplicateExercise) {
+    return;
+  }
+
+  exercises = [
+    ...exercises,
+    {
+      id: getNextId(exercises),
+      name
+    }
+  ];
+
+  exerciseInput.value = '';
+  saveState();
+  renderAll();
+});
+
+exerciseList.addEventListener('click', (event) => {
+  if (!event.target.classList.contains('delete-btn')) {
+    return;
+  }
+
+  const id = Number(event.target.dataset.id);
+  const exerciseToDelete = exercises.find((exercise) => exercise.id === id);
+  if (!exerciseToDelete) {
+    return;
+  }
+
+  exercises = exercises.filter((exercise) => exercise.id !== id);
+  workoutData = workoutData.filter((entry) => entry.exercise !== exerciseToDelete.name);
+
+  saveState();
+  renderAll();
+});
+
+submitDataBtn.addEventListener('click', () => {
+  const date = dateInput.value;
+  if (!date) {
+    return;
+  }
+
+  const newEntries = exercises.reduce((entries, exercise) => {
+    const input = document.getElementById(`input-${exercise.id}`);
+    const value = input.value.trim();
+
+    if (!value) {
+      return entries;
+    }
+
+    entries.push({
+      id: 0,
+      exercise: exercise.name,
+      date,
+      value: Number(value)
+    });
+
+    input.value = '';
+    return entries;
+  }, []);
+
+  if (newEntries.length === 0) {
+    return;
+  }
+
+  let nextId = getNextId(workoutData);
+  workoutData = [
+    ...workoutData,
+    ...newEntries.map((entry) => ({
+      ...entry,
+      id: nextId++
+    }))
+  ];
+
+  saveState();
+  renderAll();
+});
+
+dataBody.addEventListener('click', (event) => {
+  if (!event.target.classList.contains('delete-btn')) {
+    return;
+  }
+
+  const id = Number(event.target.dataset.id);
+  workoutData = workoutData.filter((entry) => entry.id !== id);
+
+  saveState();
+  renderAll();
+});

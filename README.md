@@ -8,6 +8,8 @@ A full-stack web application designed to help users log their workouts, track pr
 ##  Project Overview
 This application provides a seamless experience for fitness enthusiasts to manage their routines. Users can define custom exercises, log daily performance data, and view their improvement trends through a dynamic dashboard.
 
+The deployed portfolio version runs in demo mode: interactions are saved in the visitor's browser so every button stays usable without writing back to the original database.
+
 ---
 
 ##  Features
@@ -20,10 +22,10 @@ This application provides a seamless experience for fitness enthusiasts to manag
 * **Progress Visualization:** Interactive multi-series line charts to track performance trends across different dates.
 
 ### **Back-End (Server & Database)**
-* **RESTful API:** Robust API endpoints to handle communication between the UI and the database.
-* **Data Persistence:** Secure storage of all exercises and workout logs, ensuring data is kept across sessions.
-* **CRUD Operations:** Full support for Creating, Reading, and Deleting records for both exercise types and historical logs.
-* **Data Integrity:** Validation logic to ensure that workout entries are correctly linked to their respective exercise categories.
+* **Read-Only Seed API:** Lightweight endpoints provide the initial exercise and workout history for the deployed app.
+* **SQLite Export Pipeline:** Source data can be exported from SQLite into deploy-safe JSON files.
+* **Portfolio Demo Mode:** Add, delete, and log actions are persisted in browser storage so visitors can fully interact with the UI.
+* **Data Integrity:** Workout entries remain linked to their respective exercise categories inside the client-side demo state.
 
 ---
 
@@ -55,4 +57,4 @@ If you want to run this project locally:
 
 1. Clone the repo: `git clone <your-repo-url>`
 2. Install dependencies: `npm install`
-3. Start the server: `node server.js` (or your entry file)
+3. Start the local server: `npm run dev`
